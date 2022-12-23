@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.seccionb;
 
 /**
  *
  * @author HOME
  */
-public class Rock {
-    
+public class Rock implements Throw {
+    public boolean validar(Throw elemento) {
+        // valida si el juego gana o pierde si es papel o tijera
+        
+        if(elemento instanceof Paper){
+            return false;
+        }else if(elemento instanceof Scissors){
+            return true;
+        }
+        
+        return true;
+    }
 }

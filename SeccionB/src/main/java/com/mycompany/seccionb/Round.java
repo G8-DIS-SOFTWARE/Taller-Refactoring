@@ -1,18 +1,54 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.seccionb;
 
-/**
- *
- * @author HOME
- */
-public class Round implements Throw{
+import java.util.ArrayList;
 
-    @Override
-    public void validar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+public class Round {
+
+    public static int roundsPlayed;
+    public static int draw;
+
+    public static void ronda(ArrayList<Player> jugadores){
+        
+        Player j1 = jugadores.get(0);
+        Player j2 = jugadores.get(1);
+        
+        imprimirRonda(roundsPlayed);
+        imprimirIntentos(draw);
+        Throw juego1 = j1.getChoice();
+        Throw juego2 = j2.getChoice();
+        
+        boolean estadoJuego = juego1.validar(juego2);
+        
+        if(estadoJuego){
+            int wins1 = j1.getWins();
+            j1.setWins(wins1++);
+        }else{
+            int wins2 = j2.getWins();
+            j2.setWins(wins2++);
+        }
+        
     }
+
+    public static void imprimirRonda(int roundsPlayed){
+        System.out.println("Rondas:" + roundsPlayed);
+    }
+    
+    public static void imprimirIntentos(int draw){
+        System.out.println("Intentos:" + draw);
+    }
+    
+    public static int getIntentos(ArrayList<Player> jugadores){
+        
+        int draw = 0;
+        Player j1 = jugadores.get(0);
+        Player j2 = jugadores.get(1);
+       
+        if(j1.getChoice().equals(j2.getChoice())){
+            draw++;
+            return draw;
+        }
+        return draw;
+    }
+    
     
 }

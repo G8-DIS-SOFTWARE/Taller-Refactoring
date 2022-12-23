@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.seccionb;
 
 /**
@@ -11,8 +7,16 @@ package com.mycompany.seccionb;
 public class Scissors implements Throw{
 
     @Override
-    public void validar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean validar(Throw elemento) {
+        //valida si gana o pierde si es piedra o papel
+        
+        if(elemento instanceof Paper){
+            return true;
+        }else if(elemento instanceof Rock){
+            return false;
+        }
+        
+        return true;
     }
     
 }

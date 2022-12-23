@@ -1,17 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.seccionb;
 
-/**
- *
- * @author HOME
- */
+import java.util.ArrayList;
+
 public class RPMGame {
+    
+    private static boolean juegoGanado;
+    private static Player p1 = Player.getInstanceJ1();
+    private static Player p2 = Player.getInstanceJ2();
+    
+    private static boolean isGanado(){
+        if((p1.getWins()>=3) || (p2.getWins()>=3)){
+            return true;
+        }
+        return false;  
+    }
+    
     public static void main(String[] args) {
-        Player p1 = new Player();
-        Player p2 = new Player();
+        ArrayList<Player> jugadores = new ArrayList<>();
+        jugadores.add(p1);
+        jugadores.add(p2);
+        do{
+            Round.ronda(jugadores);
+            Round.roundsPlayed ++;           
+        }while(isGanado()); 
     }
     
 }
